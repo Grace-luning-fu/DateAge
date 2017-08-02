@@ -19,10 +19,13 @@ public class DataAge {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LocalDate today = LocalDate.now();
-		Scanner sc = new Scanner(System.in);
-		LocalDate birth;
 
+		// Initialize today's data, birthday and scanner
+		LocalDate today = LocalDate.now();
+		LocalDate birth;
+		Scanner sc = new Scanner(System.in);
+
+		// ask the user to input the birthday in the format
 		try {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			System.out.println("Enter your Birthday (yyyy/MM/dd)");
@@ -33,6 +36,7 @@ public class DataAge {
 			throw exc;
 		}
 
+		// calculate period and days between now and then
 		Period p = Period.between(birth, today);
 		long p2 = ChronoUnit.DAYS.between(birth, today);
 		System.out.println("It has been " + p2 + " days since you were born.\n" + "You are " + p.getYears() + " years, "
