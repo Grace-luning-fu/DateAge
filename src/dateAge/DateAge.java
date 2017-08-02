@@ -1,4 +1,4 @@
-package dataAge;
+package dateAge;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -15,32 +15,34 @@ import java.util.Scanner;
  * 
  */
 
-public class DataAge {
+public class DateAge {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		// Initialize today's data, birthday and scanner
 		LocalDate today = LocalDate.now();
-		LocalDate birth;
+		LocalDate birth = null;
 		Scanner sc = new Scanner(System.in);
-
+		
+		//prompt for input
+		System.out.println("Enter your Birthday (yyyy/MM/dd)");
+		String date = sc.nextLine();
+		//define the formatter
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		
 		// ask the user to input the birthday in the format
 		try {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-			System.out.println("Enter your Birthday (yyyy/MM/dd)");
-			String date = sc.nextLine();
 			birth = LocalDate.parse(date, formatter);
-		} catch (DateTimeParseException exc) {
-			System.out.printf("%s is not parsable! Enter the date in yyyy/mm/dd:%n");
-			throw exc;
+		} catch (DateTimeParseException e) {
+			System.out.println("Enter the date in yyyy/mm/dd:");
 		}
 
 		// calculate period and days between now and then
-		Period p = Period.between(birth, today);
-		long p2 = ChronoUnit.DAYS.between(birth, today);
-		System.out.println("It has been " + p2 + " days since you were born.\n" + "You are " + p.getYears() + " years, "
-				+ p.getMonths() + " months, and " + p.getDays() + " days old.");
+		Period age = Period.between(birth, today);
+		long days = ChronoUnit.DAYS.between(birth, today);
+		System.out.println("It has been " + days + " days since you were born.\n" + "You are " + age.getYears() + " years, "
+				+ age.getMonths() + " months, and " + age.getDays() + " days old.");
 	}
 
 }
