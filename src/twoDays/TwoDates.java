@@ -6,6 +6,14 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This is an application to calculate difference in dates between
+ * two dates
+ * 
+ * @author Grace
+ * 
+ */
+
 public class TwoDates {
 
 	public static void main(String[] args) {
